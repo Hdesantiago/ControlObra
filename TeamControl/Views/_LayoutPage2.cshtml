@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+
+</head>
+
+
+
+<body>
+
+    <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-menubuilder">
+                <div class="container">
+                    <ul class="nav navbar-nav navbar-left">
+
+                        <li class="dropdown">
+                            <a href="/products" class="dropdown-toggle" data-toggle="dropdown">Catalogos <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li> @Html.ActionLink("Alta de Empresa", "Index", "Empresa")</li>
+                                <li> @Html.ActionLink("Alta de Usuarios", "Index", "Usuarios")</li>
+
+
+                                @if (@Session["Usuario"].ToString() != "Admin")
+                                {
+                                    if (ViewData["UMedida"].ToString() == "S")
+                                    {
+                                        <li> @Html.ActionLink("Alta U. Medida", "Index", "Unidades") </li> }
+                                    if (ViewData["Familia"].ToString() == "S")
+                                    {
+                                        <li> @Html.ActionLink("Alta Familias", "Index", "Familia") </li> }
+                                    if (ViewData["Costo"].ToString() == "S")
+                                    {  <li> @Html.ActionLink("Alta Centro Costos", "Index", "CCostos") </li>}
+                                    if (ViewData["SubFamilia"].ToString() == "S")
+                                    {<li> @Html.ActionLink("Alta SubFamilias", "Index", "SubFamilias") </li>}
+                                    if (ViewData["Cliente"].ToString() == "S")
+                                    {<li> @Html.ActionLink("Alta Clientes", "Index", "Clientes")</li>}
+                                    if (ViewData["Proveedor"].ToString()=="S")
+                                    {<li> @Html.ActionLink("Alta Proveedores", "Index", "Proveedores")</li>}
+                                    <li><hr /></li>
+                                    <li> @Html.ActionLink("Alta de Almacenes", "Index", "Almacen")</li>
+                                    <li> @Html.ActionLink("Alta de Obras", "Index", "Obra") </li>
+
+
+
+                                }
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" style=""> Conectado como : @Session["Usuario"]</a>
+
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Inicio")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Cerrar Sesion", "LogOut", "Inicio")
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

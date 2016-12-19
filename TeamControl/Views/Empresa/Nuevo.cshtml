@@ -1,0 +1,173 @@
+﻿@model Modelos.Empresa
+
+@{
+    ViewBag.Title = "Nuevo";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+
+<div id="Light" style="margin: 0 auto; top: 0; left: 0; background-color: white; width: 100%; height: 100%; position: fixed; z-index: -1; opacity: 0.93;"></div>
+
+<div id="Dark" style="margin: 0 auto; top: 0; left: 0; background-color: black; width: 50%; height: 100%; position: fixed; z-index: 100; opacity: 0.93; visibility:hidden "></div>
+
+<div class="container">
+    <div class="row">
+        <table>
+            <tr>
+                <td><img src="~/Imagenes/TeamControl.png" style="width:150px; height:70px" /></td>
+                <td><h3>Empresa / Nuevo</h3></td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+
+    <div claas="row">
+        @using (Html.BeginForm("Guardar", "Empresa", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="@Url.Action("Index", "Empresa")" class="btn btn-info">
+                        <span class="glyphicon glyphicon glyphicon-arrow-left"></span>
+                        Regresar
+                    </a>
+
+                    <button type="submit" class="btn btn-primary glyphicon" value="Guardar">
+                        <span class="glyphicon-floppy-disk" aria-hidden="true"></span>
+                        Guardar
+                    </button>
+                </div>
+                <div class="panel-body">
+                    @if (ViewBag.Existe == "S")
+                     {
+                        <div class="alert alert-success " id="success-alert" style="font-weight:bold; width:100%">
+                            <div type="button" class="close" data-dismiss="alert">x</div>
+                            Ya existe este registro, favor de verificar !!
+                        </div>
+                    }
+                    <div class="col-md-6">
+                        <table class="table-condensed" style="width:100% ">
+                            <tr>
+                                <td>Clave Empresa</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.Emp_Cia, new { @class = "form-control input-sm" ,@placeholder="000"  })
+                                @Html.ValidationMessageFor(model => model.Emp_Cia, null, new { @class = "label label-danger" })
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Direccion</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Direccion, new { @Class = "form-control input-sm" , @placeholder="Direccion empresa" })
+                            @Html.ValidationMessageFor(model => model.Emp_Direccion, null, new { @Class = "label label-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estado</td>
+                        <td>
+                            @Html.TextBoxFor(model => model.Emp_Estado, new { @Class = "form-control input-sm", @placeholder="Estado" })
+                        @Html.ValidationMessageFor(model => model.Emp_Estado, null, new { @Class = "label label-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telefono</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Emp_Telefono, new { @Class = "form-control input-sm", @placeholder="871 1999999" })
+                    @Html.ValidationMessageFor(model => model.Emp_Telefono, null, new { @Class = "Label label-danger" })
+                </td>
+
+            </tr>
+            <tr>
+                <td>Mail</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Emp_Mail, new { @Class = "form-control input-sm" ,@placeholder="Micorreo@organizacion.com" })
+                @Html.ValidationMessageFor(model => model.Emp_Mail, null, new { @class = "label label-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Cuenta 1</td>
+            <td>@Html.TextBoxFor(model => model.Emp_CuentaBanco1, new { @Class = "form-control input-sm" })</td>
+        </tr>
+        <tr>
+            <td>Cuenta 2</td>
+            <td>@Html.TextBoxFor(model => model.Emp_CuentaBanco2, new { @Class = "form-control input-sm" })</td>
+        </tr>
+    </table>
+</div>
+<div class="col-md-6">
+    <table class="table-condensed" style="width:100%">
+        <tr>
+            <td>Nombre</td>
+            <td>
+                @Html.TextBoxFor(model => model.Emp_Nombre, new { @Class = "form-control input-sm" , @placeholder ="Mi empresa"})
+            @Html.ValidationMessageFor(model => model.Emp_Nombre, null, new { @Class = "label label-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>Colonia</td>
+        <td>
+            @Html.TextBoxFor(model => model.Emp_Colonia, new { @class = "form-control input-sm" ,@placeholder="Ubicacion / Colonia " })
+        @Html.ValidationMessageFor(model => model.Emp_Colonia, null, new { @class = "label label-danger" })
+    </td>
+</tr>
+<tr>
+    <td>Ciudad</td>
+    <td>
+        @Html.TextBoxFor(model => model.Emp_Ciudad, new { @class = "form-control input-sm", @placeholder="Localidad / Ciudad" })
+    @Html.ValidationMessageFor(model => model.Emp_Ciudad, null, new { @Class = "label label-danger" })
+</td>
+</tr>
+<tr>
+    <td>Pais</td>
+    <td>@Html.TextBoxFor(model => model.Emp_Pais, new { @Class = "form-control input-sm", @placeholder="Pais" })</td>
+</tr>
+<tr>
+    <td>RFC</td>
+    <td>
+        @Html.TextBoxFor(model => model.Emp_RFC, new { @Class = "form-control input-sm",@placeholder="AAAA000000XXX" })
+    @Html.ValidationMessageFor(model => model.Emp_RFC, null, new { @class = "label label-danger" })
+</td>
+</tr>
+<tr>
+    <td>Cuenta 3</td>
+    <td>@Html.TextBoxFor(model => model.Emp_CuentaBanco3, new { @Class = "form-control input-sm" })</td>
+</tr>
+<tr>
+    <td>Cuenta 4</td>
+    <td>@Html.TextBoxFor(model => model.Emp_CuentaBanco4, new { @Class = "form-control input-sm" })</td>
+</tr>
+<tr>
+    <td>Cuenta 5</td>
+    <td>@Html.TextBoxFor(model => model.Emp_CuentaBanco5, new { @class = "form-control input-sm" })</td>
+</tr>
+<tr>
+    <td>Logo</td>
+    <td>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input name="Image" type="file" />
+                @Html.ValidationMessageFor(model => model.Emp_Imagen, null, new { @class = "label label-danger" })
+
+            </div>
+        </div>
+    </td>
+</tr>
+</table>
+</div>
+
+</div>
+
+</div>
+        }
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+            $("#success-alert").alert('close');
+        })
+    })
+
+</script>
+

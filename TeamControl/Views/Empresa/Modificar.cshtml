@@ -1,0 +1,173 @@
+﻿@model Modelos.Empresa
+
+@{
+    ViewBag.Title = "Modificar";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+
+
+<div id="Light" style="margin: 0 auto; top: 0; left: 0; background-color: white; width: 100%; height: 100%; position: fixed; z-index: -1; opacity: 0.93;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <td><img src="~/Imagenes/TeamControl.png" style="width:150px; height:70px" /></td>
+                    <td><h3>Empresa</h3></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <hr />
+    <div class="panel panel-default">
+        @using (Html.BeginForm("Actualizar", "Empresa", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="panel-heading">
+                <a href="@Url.Action("Index", "Empresa")" class="btn btn-info">
+                    <span class="glyphicon glyphicon glyphicon-arrow-left"></span>
+                    Regresar
+                </a>
+                <button type="submit" class="btn btn-primary glyphicon" value="Guardar">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                    Guardar
+                </button>
+            </div>
+            <div class="panel-body">
+
+
+                <div class="col-md-6">
+                    @Html.HiddenFor(model => model.Emp_id)
+                    <table class="table-condensed" style="width:100%">
+                        <tr>
+                            <td>Empresa</td>
+                            <td>@Html.TextBoxFor(model => model.Emp_Cia, new { @class = "form-control input-sm", @ReadOnly = "True" })</td>
+                        </tr>
+                        <tr>
+                            <td>Direccion</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Direccion, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Direccion)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Estado</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Estado, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Estado)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Telefono</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Telefono, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Telefono)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mail</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Mail, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Mail)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cuenta1</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_CuentaBanco1, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_CuentaBanco1)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cuenta2</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_CuentaBanco2, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_CuentaBanco2)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table-condensed" style="width:100%">
+                        <tr>
+                            <td>Nombre</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Nombre, new { @Class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Nombre)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Colonia </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Colonia, new { @Class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Colonia)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ciudad</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Ciudad, new { @Class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Ciudad)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pais</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_Pais, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_Pais)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>RFC</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_RFC, new { @Class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_RFC)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cuenta 3</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_CuentaBanco3, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_CuentaBanco3)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cuenta 4</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_CuentaBanco4, new { @Class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_CuentaBanco4)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cuenta 5</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Emp_CuentaBanco5, new { @Class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Emp_CuentaBanco5)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Logo Empresa</td>
+                            <td>
+                                @if (Model.Emp_Imagen != null)
+                                {
+                                    <img src="data:image/png; base64,@Convert.ToBase64String( Model.Emp_Imagen,0,Model.Emp_Imagen.Length) " style="height:50px; width:50px " />
+                                }
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input name="Image" type="file" />
+                                        @Html.ValidationMessageFor(model => model.Emp_Imagen, null, new { @class = "label label-danger" })
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+</div>

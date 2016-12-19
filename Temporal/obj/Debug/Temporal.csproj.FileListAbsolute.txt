@@ -1,0 +1,4 @@
+C:\Users\Hugo\OneDrive\TeamControl\Temporal\bin\Debug\Temporal.dll
+C:\Users\Hugo\OneDrive\TeamControl\Temporal\bin\Debug\Temporal.pdb
+C:\Users\Hugo\OneDrive\TeamControl\Temporal\obj\Debug\Temporal.dll
+C:\Users\Hugo\OneDrive\TeamControl\Temporal\obj\Debug\Temporal.pdb

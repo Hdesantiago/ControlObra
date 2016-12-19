@@ -1,0 +1,9 @@
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\bin\Debug\Modelos.dll
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\bin\Debug\Modelos.pdb
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\bin\Debug\EntityFramework.dll
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\bin\Debug\EntityFramework.xml
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\obj\Debug\Modelos.dll
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\obj\Debug\Modelos.pdb
+C:\Users\Hugo\OneDrive\TeamControl\Modelos\obj\Debug\Modelos.csprojResolveAssemblyReference.cache

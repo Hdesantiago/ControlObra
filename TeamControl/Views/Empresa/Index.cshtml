@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Modelos.Empresa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+
+<div id="Light" style="margin: 0 auto; top: 0; left: 0; background-color: white; width: 100%; height: 100%; position: fixed; z-index: -1; opacity: 0.93;"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <td><img src="~/Imagenes/TeamControl.png" style="width:150px; height:70px" /></td>
+                    <td><h3>Empresa</h3></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <hr />
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="@Url.Action("Nuevo","Empresa")" class="btn btn-primary">
+                <span class="glyphicon glyphicon-file"></span>
+                Nuevo
+            </a>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Empresa</td>
+                            <td>Nombre</td>
+                            <td>Direccion</td>
+                            <td>RFC</td>
+                            <td>Logo</td>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Emp_id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Emp_Cia)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Emp_Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Emp_Direccion)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Emp_RFC)</td>
+                            <td>
+                                @if (item.Emp_Imagen != null)
+                                {
+                                    <img src="data:image/png; base64,@Convert.ToBase64String(item.Emp_Imagen,0,item.Emp_Imagen.Length) " style="height:50px; width:50px " />
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Modificar", "Modificar", new { id = item.Emp_id }) |
+                                <a onclick="return confirm('¿Desea eliminar este registro?')" href="~/Empresa/Eliminar/@item.Emp_id ">Eliminar</a>
+
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

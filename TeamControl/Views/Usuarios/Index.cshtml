@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Modelos.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+
+
+<div id="Light" style="margin: 0 auto; top: 0; left: 0; background-color: white; width: 100%; height: 100%; position: fixed; z-index: -1; opacity: 0.93;"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <td><img src="~/Imagenes/TeamControl.png" style="width:150px; height:70px" /></td>
+                    <td><h3>Alta de Usuarios</h3></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+
+        <div class="panel panel-default">
+            <div class="panel-heading ">
+                <a href="@Url.Action("Nuevo","Usuarios")" class="btn btn-primary">
+                    <span class="glyphicon glyphicon glyphicon-file"></span>
+                    Nuevo
+                </a>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td>Empresa</td>
+                                <td>Usuario</td>
+                                <td>Nombre</td>
+                                <td>Password</td>
+                                <td>Puesto</td>
+                                <td>Alta</td>
+                                <td>Acciones</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var valores in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(x => valores.Us_Empresa)</td>
+                                    <td>@Html.DisplayFor(x => valores.Us_Usuario)</td>
+                                    <td>@Html.DisplayFor(x => valores.Us_Nombre)</td>
+                                    <td>@Html.DisplayFor(x => valores.Us_Password)</td>
+                                    <td>@Html.DisplayFor(x => valores.Us_Puesto)</td>
+                                    <td>@Html.DisplayFor(x => valores.Us_Fum)</td>
+                                    <td>
+                                        @Html.ActionLink("Modificar", "Modificar", new { id = valores.Us_Id }) |
+                                    <a onclick="confirm ('¿Desea eliminar este registro?') " href="~/Usuarios/Eliminar/@valores.Us_Id">Eliminar</a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*
+    @Html.ActionLink("Details", "Details", new { id = item.Us_Id }) |
+*@

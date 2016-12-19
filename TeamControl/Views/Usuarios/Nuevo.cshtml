@@ -1,0 +1,161 @@
+﻿@model Modelos.Usuario
+
+@{
+    ViewBag.Title = "Nuevo";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+
+<div id="Light" style="margin: 0 auto; top: 0; left: 0; background-color: white; width: 100%; height: 100%; position: fixed; z-index: -1; opacity: 0.93;"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <td><img src="~/Imagenes/TeamControl.png" style="width:150px; height:70px" /></td>
+                    <td><h3>Usuario / Alta</h3></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+
+
+        @using (Html.BeginForm("Guardar", "Usuarios", FormMethod.Post))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading ">
+                    <a href="@Url.Action("Index","Usuarios")" class="btn btn-info">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Regresar
+                    </a>
+
+
+                    <button type="submit" class="btn btn-primary glyphicon" value="Guardar">
+                        <span class="glyphicon-floppy-disk" aria-hidden="true"></span>
+                        Guardar
+                    </button>
+                </div>
+                <div class="panel-body">
+                    @if (ViewBag.Existe == "S")
+                    {
+                        <div class="alert alert-success " id="success-alert" style="font-weight:bold; width:100%">
+                            <div type="button" class="close" data-dismiss="alert">x</div>
+                            Ya existe este registro, favor de verificar !!
+                        </div>
+                    }
+                    <div class="col-md-6">
+                        <table class="table-condensed " style="width:100%">
+                            <tr>
+                                <td>Empresa</td>
+                                <td>
+                                    @{
+                                    var i = 0;
+                                }
+                                <select class="form-control" id="Empresa" name="Empresa">
+                                    @foreach (var x in ViewBag.Empresa)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            <option></option>
+                                        }
+                                        <option>@x.Emp_Cia - @x.Emp_Nombre</option>
+
+                                        i = i + 1;
+                                    }
+                                </select>
+                                @Html.HiddenFor(x => x.Us_Empresa, new { @Class = "form-control", @id = "SelEmpresa" })
+                                @Html.ValidationMessageFor(x => x.Us_Empresa, null, new { @Class = "label label-danger" })
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Usuario</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Us_Usuario, new { @Class = "form-control", @placeholder = "Usuario de Acceso" })
+                            @Html.ValidationMessageFor(model => model.Us_Usuario, null, new { @class = "label label-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>
+                            @Html.TextBoxFor(model => model.Us_Nombre, new { @Class = "form-control", @placeholder = "Nombre del Usuario" })
+                        @Html.ValidationMessageFor(model => model.Us_Nombre, null, new { @class = "label label-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Us_Password, new { @class = "form-control", @placeholder = "Password del usuario" })
+                    @Html.ValidationMessageFor(model => model.Us_Password, null, new { @class = "label label-danger" })
+
+                </td>
+            </tr>
+            <tr>
+                <td>Puesto</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Us_Puesto, new { @class = "form-control", @placeholder = "Puesto asignado" })
+                @Html.ValidationMessageFor(model => model.Us_Puesto, null, new { @class = "label label-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Fecha</td>
+            <td>
+                @Html.TextBoxFor(model => model.Us_Fum, new { @Class = "form-control", @Value = @DateTime.Now.ToString("dd/MM/yyyy"), @ReadOnly = true })
+            @Html.ValidationMessageFor(model => model.Us_Fum, null, new { @class = "label label-danger" })
+        </td>
+    </tr>
+
+</table>
+</div>
+                    <div class="col-md-6">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Permisos
+                            </div>
+                            <div class="panel-body">
+                                <table class="table-condensed " style="width:100%">
+                                    <tr><td><input type="checkbox" id="Op1" name="Op1" /> Unidad de Medida </td>                                                   </tr>
+                                    <tr><td><input type="checkbox" id="Op2" name="Op2" /> Familias</td></tr>
+                                    <tr><td><input type="checkbox" id="Op3" name="Op3" /> Centro de Costo </td></tr>
+                                    <tr><td><input type="checkbox" id="Op4" name="Op4" /> Subfamilias</td></tr>
+                                    <tr><td><input type="checkbox" id="Op5" name="Op5" /> Obras</td></tr>
+                                    <tr><td><input type="checkbox" id="Op6" name="Op6" /> Clientes</td></tr>
+                                    <tr><td><input type="checkbox" id="Op7" name="Op7" /> Proveedores</td></tr>
+                                    <tr><td><input type="checkbox" id="Op8" name="Op8" /> Almacenes</td></tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+</div>
+</div>
+                                    }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('#Empresa').change(function () {
+            console.info('opcion seleccionada' + $('#Empresa').val());
+            var v_seleccion = $('#Empresa').val()
+            $('#SelEmpresa').val(v_seleccion.substring(0,3));
+        });
+
+
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+            $("#success-alert").alert('close');
+        })
+
+    });
+
+</script>
+
+
+
+

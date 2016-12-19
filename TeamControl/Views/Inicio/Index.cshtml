@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+
+<div id="Light" style="margin: 0 auto; top: 0; left: 0; background-color: white; width: 100%; height: 100%; position: fixed; z-index: -1; opacity: 0.93;"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <td><img src="~/Imagenes/TeamControl.png" style="width:150px; height:70px" /></td>
+                    <td><h3>Control de Obra</h3></td>
+                </tr>
+            </table>
+
+
+
+        </div>
+    </div>
+    @*<input type="button" id="BtnConsulta" value="Consulta"/>
+
+        <input type="button" id="BtnConsulta2" value="Consulta2" />
+
+        <input type="text" value=@Session["Usuario"] id="SesionUsr"/>*@
+
+    <br />
+    <div class="row">
+        <div class="col-md-12 ">
+            <img src="~/Imagenes/Back.jpg" class="img-responsive" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color:navy">Colaboracion</h3>
+
+            <p>TeamControl fue creado para ayudarte en la administracion y control de tu obra, una herramienta sencilla y economica que te permite trabajar de manera eficiente y controlar muchos de los aspectos diarios </p>
+        </div>
+        <div class="col-md-4">
+            <h3 style="color:navy">Acceso</h3>
+            <p>TeamControl fue creada pensando en las necesidades diarias de trabajar desde cualquier parte. pensando en ejecutar las acciones en el momento y tener informacion real de las operaciones diarias </p>
+        </div>
+        <div class="col-md-4">
+            <h3 style="color:navy">Indicadores</h3>
+            <p>TeamControl cuenta con reportes adecuados para que revises el nivel de eficiencia de tus operaciones.</p>
+        </div>
+    </div>
+    <br />
+
+
+</div>
+
+@*<script>
+        $(document).ready(function () {
+            console.info("Entre");
+
+
+            $('#BtnConsulta').click(function()
+            {
+                console.info("Presionado");
+                $.ajax({
+                    url: "http://teamcontrol.somee.com/Api/Dowork",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        console.info(data);
+                    }
+
+
+
+                });
+
+            });
+
+            $("#BtnConsulta2").click(function () {
+                var v_valor = $('#SesionUsr').val();
+                $.ajax({
+                    url: "http://teamcontrol.somee.com/Api/Dowork",
+                    type: "GET",
+                    data: {id: v_valor, edad: "34"},
+                    dataType: "json",
+                    success: function (data)
+                    {
+                        console.info(data);
+                    }
+
+
+                });
+
+            });
+
+
+
+        });
+
+    </script>*@
